@@ -16,14 +16,14 @@ drcRunDir/*
 abstract.log*
 abstract.record*
 
-virtuoso/data/virtuoso/.data_loaded
-virtuoso/data/virtuoso/.dba_pwd_set
-virtuoso/data/virtuoso/clean-logs.sh
-virtuoso/data/virtuoso/virtuoso-temp.db
-virtuoso/data/virtuoso/virtuoso.db
-virtuoso/data/virtuoso/virtuoso.ini
-virtuoso/data/virtuoso/virtuoso.lck
-virtuoso/data/virtuoso/virtuoso.pxa
-virtuoso/data/virtuoso/virtuoso.trx
+**/virtuoso/data/virtuoso/.data_loaded
+**/virtuoso/data/virtuoso/.dba_pwd_set
+**/virtuoso/data/virtuoso/clean-logs.sh
+**/virtuoso/data/virtuoso/virtuoso-temp.db
+**/virtuoso/data/virtuoso/virtuoso.db
+**/virtuoso/data/virtuoso/virtuoso.ini
+**/virtuoso/data/virtuoso/virtuoso.lck
+**/virtuoso/data/virtuoso/virtuoso.pxa
+**/virtuoso/data/virtuoso/virtuoso.trx
 
 # End of https://www.gitignore.io/api/virtuoso

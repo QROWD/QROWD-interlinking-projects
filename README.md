@@ -8,6 +8,3 @@ docker-compose up
 ```
 
 ## Create Pybossa Project
-
-
-

@@ -168,36 +168,34 @@
     pybossa.taskLoaded(function(task, deferred) {
         if (!$.isEmptyObject(task)) {
             var scope = angular.element('[ng-controller=MarkerController]').scope()
-            var source = task.info[0]
-            var target = task.info[1]
             var bounds = scope.leafletBoundsHelpers.createBoundsFromArray([
-                [target.lat, target.long],
-                [source.lat, source.long]
+                [task.info.target_lat, target.long],
+                [task.info.source_lat, task.info.source_long]
             ]);
             scope.addMarkers = function() {
                 angular.extend(scope, {
                     bounds: bounds,
                     markers: {
                         m1: {
-                            lat: source.lat,
-                            lng: source.long,
+                            lat: task.info.source_lat,
+                            lng: task.info.source_long,
                             message: "A "
                         },
                         m2: {
-                            lat: target.lat,
-                            lng: target.long,
+                            lat: task.info.target_lat,
+                            lng: task.info.target_long,
                             message: "B "
                         }
                     }
                 });
             }();
             scope.$apply()
-            $("#source ").attr('src', source.thumbnail);
-            $("#target ").attr('src', target.thumbnail);
-            $("#sourcecapacity ").text(source.capacity + " Bikes");
-            $("#targetcapacity ").text(target.capacity + " Bikes");
-            $("#sourceracktype ").attr('src', source.bikeRackType.depiction);
-            $("#targetracktype ").attr('src', target.bikeRackType.depiction);
+            $("#source ").attr('src', task.info.source_thumbnail);
+            $("#target ").attr('src', task.info.target_thumbnail);
+            $("#sourcecapacity ").text(task.info.source_capacity + " Bikes");
+            $("#targetcapacity ").text(task.info.target_capacity + " Bikes");
+            $("#sourceracktype ").attr('src', task.info.source_depiction);
+            $("#targetracktype ").attr('src', task.info.target_depiction);
             $("#loadingTask ").hide();
             deferred.resolve(task);
         } // End if task empty
