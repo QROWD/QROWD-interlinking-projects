@@ -8,3 +8,5 @@ docker-compose up
 ```
 
 ## Create Pybossa Project
+
+- [Scifabric/pbs: PYBOSSA command line client](https://github.com/Scifabric/pbs)

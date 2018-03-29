@@ -1,23 +1,21 @@
-SELECT 
-  $source_thumbnail 
-  $target_thumbnail
-  $source_lat
-  $target_lat
-  $source_long
-  $target_long
-  $source_capacity 
-  $target_capacity
-  $source_depiction 
-  $target_depiction
-WHERE { 
-  <http://linkedgeodata.org/triplify/node1461869763> <http://dbpedia.org/ontology/thumbnail> $source_thumbnail .
-  <http://linkedgeodata.org/triplify/node1465193437> <http://dbpedia.org/ontology/thumbnail> $target_thumbnail .
-  <http://linkedgeodata.org/triplify/node1461869763> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> $source_lat .
-  <http://linkedgeodata.org/triplify/node1465193437> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> $target_lat .
-  <http://linkedgeodata.org/triplify/node1461869763> <http://www.w3.org/2003/01/geo/wgs84_pos#long> $source_long .
-  <http://linkedgeodata.org/triplify/node1465193437> <http://www.w3.org/2003/01/geo/wgs84_pos#long> $target_long .
-  <http://linkedgeodata.org/triplify/node1461869763> <http://linkedgeodata.org/ontology/capacity> $source_capacity .
-  <http://linkedgeodata.org/triplify/node1465193437> <http://linkedgeodata.org/ontology/capacity> $target_capacity .
-  <http://linkedgeodata.org/ontology/BicycleParkingType#wallLoop> <http://xmlns.com/foaf/0.1/depiction> $source_depiction .
-  <http://linkedgeodata.org/ontology/BicycleParkingType#wallLoop> <http://xmlns.com/foaf/0.1/depiction> $target_depiction
-}
+PREFIX  dbo:  <http://dbpedia.org/ontology/>
+PREFIX  lgdo: <http://linkedgeodata.org/ontology/>
+PREFIX  owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT  ?s ?sl ?t ?tl
+WHERE
+  { SERVICE <http://dbpedia.org/sparql>
+      { ?s  <http://www.w3.org/2000/01/rdf-schema#label>  ?sl ;
+            rdf:type              dbo:Airport
+      }
+    SERVICE <http://linkedgeodata.org/sparql>
+      { ?t  <http://www.w3.org/2000/01/rdf-schema#label>  ?tl ;
+            rdf:type              lgdo:Airport
+      }
+    { SELECT  ?s
+      # FROM <http://qrowd-project.eu/>
+      WHERE
+        { ?s  owl:sameAs  ?t }
+    }
+  }
